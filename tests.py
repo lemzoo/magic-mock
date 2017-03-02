@@ -1,7 +1,7 @@
 #!/usr/bin/env python
-from unittest.mock import MagicMock
+from unittest.mock import Mock
 
-from tools import Calculette
+from tools import Calculette, CacluletteScientifique
 
 class TestWithoutMock:
 	def setup(self):
@@ -30,12 +30,24 @@ class TestWithoutMock:
 
 class TestWithMock(TestWithoutMock):
 	def test_add(self):
-		self.calculette.add = MagicMock()
+		self.calculette.add = Mock()
 		self.calculette.add(3, 4)
 		self.calculette.add.assert_called_with(3, 4)
 
 	def test_sub(self):
-		self.calculette.sub = MagicMock(return_value=(3-4))
+		self.calculette.sub = Mock(return_value=(3-4))
 		returned = self.calculette.sub(3, 4)
 		expected = self.calculette.sub.return_value
 		assert returned == expected
+
+
+class TestFullMock:
+    def test_carre(self):
+        # Given
+        calculette = Mock(Calculette)
+        calculette_scientifique = CacluletteScientifique(calculette)
+        # When
+        value = 2
+        calculette_scientifique.carre(value)
+        # Then
+        calculette_scientifique.calculette.mul.assert_called_with(value, value)

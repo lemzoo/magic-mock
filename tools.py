@@ -1,38 +1,46 @@
 #!/usr/bin/env python
 
+def add(first_arg, second_arg):
+	return first_arg + second_arg
+
+
+def add(first_arg, second_arg):
+	return first_arg + second_arg
+
+
+def sub(first_arg, second_arg):
+	return first_arg - second_arg
+
+
+def mul(first_arg, second_arg):
+	return first_arg * second_arg
+
+
+def div(first_arg, second_arg):
+	return first_arg / second_arg
+
 
 class Calculette:
 	def __init__(self):
 		pass
 
-	def add(self, x, y):
-		return add(x,y)
+	def add(self, first_arg, second_arg):
+		return add(first_arg,second_arg)
 
-	def sub(self, x, y):
-		return sub(x, y)
+	def sub(self, first_arg, second_arg):
+		return sub(first_arg, second_arg)
 
-	def mul(self, x, y):
-		return mul(x, y)
+	def mul(self, first_arg, second_arg):
+		return mul(first_arg, second_arg)
 
-	def div(self, x, y):
-		return div(x, y)
-
-
-def add(x, y):
-	return x + y
+	def div(self, first_arg, second_arg):
+		return div(first_arg, second_arg)
 
 
-def add(x, y):
-	return x + y
+class CacluletteScientifique:
+	def __init__(self, calculette):
+		self.calculette = calculette
 
-
-def sub(x, y):
-	return x - y
-
-
-def mul(x, y):
-	return x * y
-
-
-def div(x, y):
-	return x / y
+	def carre(self, value):
+		carre = self.calculette.mul(value, value)
+		return carre
